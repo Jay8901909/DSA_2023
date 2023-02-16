@@ -1,0 +1,109 @@
+#include <iostream>
+using namespace std;
+ 
+class Node {
+public:
+    int data;
+    Node* link;
+   
+    Node(int a)
+    {
+        this->data = a;
+        this->link = NULL;
+    }
+};
+ 
+class Stack {
+    Node* top;
+ 
+public:
+    Stack() { top = NULL; }
+ 
+    void push(int data)
+    {
+ 
+        Node* temp = new Node(data);
+ 
+        if (!temp) {
+            cout << "\noverflow";
+            exit(1);
+        }
+ 
+        temp->data = data;
+ 
+        temp->link = top;
+ 
+        top = temp;
+    }
+ 
+ 
+    void pop()
+    {
+        Node* temp;
+ 
+        if (top == NULL) {
+            cout << "underflow" << endl;
+        }
+        else {
+ 
+            temp = top;
+ 
+            top = top->link;
+ 
+ 
+            free(temp);
+        }
+    }
+ 
+    void display()
+    {
+        Node* temp;
+ 
+        if (top == NULL) {
+            cout << "underflow";
+            exit(1);
+        }
+        else {
+            temp = top;
+            while (temp != NULL) {
+ 
+                cout << temp->data;
+ 
+                temp = temp->link;
+                if (temp != NULL)
+                    cout << " ";
+            }
+            cout << "\n";
+        }
+    }
+};
+ 
+int main()
+{
+    Stack s;
+    int valu;
+    int ch;
+    do {
+      cin>>ch;
+      switch(ch) {
+         case 1: {
+            cin>>valu;
+            s.push(valu);
+            break;
+         }
+         case 2: {
+            s.pop();
+            break;
+         }
+         case 3: {
+            s.display();
+            break;
+         }
+         default: {
+           
+         }
+      }
+   }while(ch!=0);
+ 
+    return 0;
+}
