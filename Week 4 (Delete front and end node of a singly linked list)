@@ -1,0 +1,91 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+class ll {
+   
+    int data;
+    ll next;
+    ll(int data)
+    {
+        this.data = data;
+    }
+}
+
+public class Solution {
+   
+    static ll head = null;
+   
+    public static void insert_end(int x) {
+        ll NEW = new ll(x);
+        if(head==null){
+            head = NEW;
+        }
+        else{
+            ll temp = head;
+            while(temp.next!=null){
+                temp = temp.next;
+            }
+            temp.next = NEW;
+        }
+    }
+   
+    public static void delete_front() {
+        if(head==null){
+            System.out.println("No Node");
+        }
+        else{
+            head = head.next;
+        }
+    }
+   
+    public static void delete_last() {
+        ll temp = head;
+        if(head==null){
+            System.out.println("No Node");
+        }
+        else if(head.next==null){
+            head = temp;
+        }
+        else{
+            while(temp.next.next!=null){
+                temp = temp.next;
+            }
+            temp.next = null;
+        }
+    }
+   
+    public static void print(){
+        ll temp = head;
+            while(temp!=null){
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            }
+        System.out.println();
+    }
+   
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            int choice = sc.nextInt();
+            if (choice == 1) {
+                int x = sc.nextInt();
+                insert_end(x);
+            }
+            else if (choice == 2) {
+                delete_front();
+            }
+            else if (choice == 3) {
+                delete_last();
+            }
+            else if(choice == 4){
+                print();
+            }
+            else{
+                break;
+            }
+        }
+    }
+}
