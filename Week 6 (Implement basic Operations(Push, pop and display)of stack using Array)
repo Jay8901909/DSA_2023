@@ -1,0 +1,68 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+ 
+   int top =-1;
+    void push(int stack[],int valu,int a) {
+   
+   if(top>=a-1){
+   cout<<"overflow"<<endl;
+   }
+   else {
+      top++;
+      stack[top]=valu;
+   }
+}
+    void pop (int stack[])
+    {
+        if(top<=-1)
+        {
+            cout<<"underflow";
+        }
+        else
+        {
+            top--;
+        }
+    }
+     void display (int stack[])
+     {
+         if(top>=0)
+         {
+      for(int i=top; i>=0; i--)
+      cout<<stack[i]<<" ";
+      cout<<endl;
+         }
+         else{}
+     }
+   
+    int main()
+    {
+        int ch,valu,a;
+      cin>>a;
+    int s[a];
+      do {
+      cin>>ch;
+      switch(ch) {
+         case 1: {
+            cin>>valu;
+            push(s,valu,a);
+            break;
+         }
+         case 2: {
+            pop(s);
+            break;
+         }
+         case 3: {
+            display(s);
+            break;
+         }
+         
+      }
+   }while(ch!=0);
+   return 0;
+}
